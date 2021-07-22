@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { Layout, Menu } from 'antd';
+import BulkUpdate from './components/BulkUpdate';
 import './App.css';
 
+const { Header, Content, Sider } = Layout;
+
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout style={{ minHeight: '100vh' }}>
+      <Header className="header">
+        <div className="title">工具库</div>
+      </Header>
+      <Content>
+        <Layout className="site-layout-background">
+          <Sider className="site-layout-background" width={200} style={{ height: '883px' }}>
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={['1']}
+              defaultOpenKeys={['sub1']}
+              style={{ height: '100%' }}
+            >
+              <Menu.Item key="1">批量更新依赖</Menu.Item>
+            </Menu>
+          </Sider>
+          <Content style={{ padding: '24px', minHeight: 280, backgroundColor: '#eee' }}>
+            <main style={{ padding: '24px', height: '100%', backgroundColor: '#fff' }}>
+              <BulkUpdate />
+            </main>
+          </Content>
+        </Layout>
+      </Content>
+      </Layout>
   );
 }
 
